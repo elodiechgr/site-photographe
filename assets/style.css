@@ -68,8 +68,7 @@ nav a {
 }
 
 .picture img {
-	width: 100%;
-
+	width: 65%;
 }
 #about-me {
 	flex: 2
@@ -98,12 +97,16 @@ nav a {
 	justify-content: center;
 }
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-	color: #fff;
-	background-color: #BEB45A;
+	color: black;
+	background-color: #d8d3a8;
 	border-radius:0 ;
 }
+  
 .nav-pills .nav-link {
 	color: #000
+}
+.nav-link {
+	cursor: pointer;
 }
 .item-column {
 	position: relative;
@@ -208,6 +211,11 @@ nav a {
 	right: 0;
 	z-index: -1;
 }
+
+.adresse-contact {
+	font-weight: 400;
+}
+
 .form-container {
 	flex : 2;
 
@@ -252,7 +260,7 @@ input[type="submit"] {
 		margin-top: 0;
 		margin-bottom: 1em;
 	}
-	#about-me h6, #about-me p {
+	#about-me h3, #about-me p {
 		width: 100%;
 	}
 }
