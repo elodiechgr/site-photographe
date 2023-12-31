@@ -12,7 +12,6 @@
         );
       }
       $.fn.mauGallery.listeners(options);
-
       $(this)
         .children(".gallery-item")
         .each(function (index) {
@@ -28,7 +27,6 @@
             tagsCollection.push(theTag);
           }
         });
-
       if (options.showTags) {
         $.fn.mauGallery.methods.showItemTags(
           $(this),
@@ -36,17 +34,16 @@
           tagsCollection
         );
       }
-
       $(this).fadeIn(500);
     });
   };
   $.fn.mauGallery.defaults = {
     columns: 3,
-    lightBox: true,
+    lightBox: !0,
     lightboxId: null,
-    showTags: true,
+    showTags: !0,
     tagsPosition: "bottom",
-    navigation: true,
+    navigation: !0,
   };
   $.fn.mauGallery.listeners = function (options) {
     $(".gallery-item").on("click", function () {
@@ -56,7 +53,6 @@
         return;
       }
     });
-
     $(".gallery").on("click", ".nav-link", $.fn.mauGallery.methods.filterByTag);
     $(".gallery").on("click", ".mg-prev", function () {
       $.fn.mauGallery.methods.prevImage(options.lightboxId);
@@ -119,11 +115,9 @@
       let activeImage = $(".lightboxImage");
       let activeTag = $(".tags-bar span.active-tag").data("images-toggle");
       let imagesCollection = this.getImagesCollection(activeTag);
-
       this.currentIndex =
         (this.currentIndex - 1 + imagesCollection.length) %
         imagesCollection.length;
-
       let prevImage = imagesCollection.eq(this.currentIndex);
       activeImage.attr("src", prevImage.attr("src"));
     },
@@ -131,9 +125,7 @@
       let activeImage = $(".lightboxImage");
       let activeTag = $(".tags-bar span.active-tag").data("images-toggle");
       let imagesCollection = this.getImagesCollection(activeTag);
-
       this.currentIndex = (this.currentIndex + 1) % imagesCollection.length;
-
       let nextImage = imagesCollection.eq(this.currentIndex);
       activeImage.attr("src", nextImage.attr("src"));
     },
@@ -179,7 +171,6 @@
                 <span class="nav-link"  data-images-toggle="${value}">${value}</span></li>`;
       });
       var tagsRow = `<ul class="my-4 tags-bar nav nav-pills">${tagItems}</ul>`;
-
       if (position === "bottom") {
         gallery.append(tagsRow);
       } else if (position === "top") {
@@ -192,13 +183,9 @@
       if ($(this).hasClass("active-tag")) {
         return;
       }
-
       $(".active-tag").removeClass("active active-tag");
-
       $(this).addClass("active active-tag");
-
       var tag = $(this).data("images-toggle");
-
       $(".gallery-item").each(function () {
         $(this).parents(".item-column").hide();
         if (tag === "all") {
@@ -207,8 +194,6 @@
           $(this).parents(".item-column").show(300);
         }
       });
-
-      // Réinitialiser currentIndex lorsque vous changez de catégorie
       $.fn.mauGallery.methods.currentIndex = 0;
     },
   };
